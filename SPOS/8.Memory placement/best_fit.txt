@@ -1,0 +1,64 @@
+import java.util.Scanner;
+public class Best{
+    public static void main(String []args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter no process:");
+        int pno=sc.nextInt();
+        System.out.println("Enter no block:");
+        int bno=sc.nextInt();
+        int process[]=new int[pno];
+        int block[]=new int[bno];
+        int allocation[]=new int[pno];
+        System.out.println("Enter processes:");
+        for(int i=0;i<pno;i++){
+            process[i]=sc.nextInt();
+        }
+        System.out.println("Enter resources:");
+        for(int i=0;i<bno;i++){
+            block[i]=sc.nextInt();
+        }
+        for(int i=0;i<pno;i++){
+            allocation[i]=-1;
+        }
+        for(int i=0;i<pno;i++){
+            int j;
+            int temp=-1;
+            for(j=0;j<bno;j++){
+                int flag=0;
+                if(block[j]>=process[i]){
+                    for(int k=0;k<pno;k++){
+                        if(allocation[k]==j){
+                            flag=1;
+                            
+                        }
+                    }
+                    if(temp==-1 && flag==0){
+                        temp=j;
+                    }
+                    else if(flag==0 && block[temp]>block[j]){
+                        temp=j;
+                    }
+                    else{
+                        continue;
+                    }
+                    
+                }
+
+            }
+            if(temp!=-1){
+                allocation[i]=temp;
+            }
+        }
+        System.out.println("pno\tpsize\tblock");
+        for(int i=0;i<pno;i++){
+            System.out.print((i+1)+"\t"+process[i]+"\t");
+            if(allocation[i]!=-1){
+                System.out.println(allocation[i]+1);
+            }
+            else{
+                System.out.println("NA");
+            }
+        }
+    }
+    
+}

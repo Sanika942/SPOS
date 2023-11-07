@@ -1,0 +1,97 @@
+
+from tkinter import *
+from tkinter import messagebox
+
+base = Tk()
+base.geometry("500x500")
+base.title("registration form")
+base.config(bg="Red")
+
+lab=Label(base, text="Registration Form", bg="Red",width=18, font=("arial", 18))
+lab.place(x=50, y=20)
+
+lb1 = Label(base, text="Enter Name", width=10, font=("arial", 12))
+lb1.place(x=20, y=80)
+en1 = Entry(base)
+en1.place(x=200, y=80)
+
+lb8 = Label(base, text="Enter Address", width=10, font=("arial", 12))
+lb8.place(x=20, y=120)
+en8 = Entry(base)
+en8.place(x=200, y=120)
+
+lb3 = Label(base, text="Enter Email", width=10, font=("arial", 12))
+lb3.place(x=19, y=160)
+en3 = Entry(base)
+en3.place(x=200, y=160)
+
+lb4 = Label(base, text="Enter Mobile No", width=13, font=("arial", 12))
+lb4.place(x=19, y=200)
+en4 = Entry(base)
+en4.place(x=200, y=200)
+
+lb5 = Label(base, text="Select Gender", width=15, font=("arial", 12))
+lb5.place(x=5, y=240)
+vars = IntVar()
+Radiobutton(base, text="Male", padx=5, variable=vars, value=1).place(x=180, y=240)
+Radiobutton(base, text="Female", padx=10, variable=vars, value=2).place(x=240, y=240)
+Radiobutton(base, text="others", padx=15, variable=vars, value=3).place(x=310, y=240)
+
+list_of_cntry = ("United States", "India", "Nepal", "Germany")
+cv = StringVar()
+drplist = OptionMenu(base, cv, *list_of_cntry)
+drplist.config(width=15)
+cv.set("Select country")
+lb2 = Label(base, text="Select Country", width=13, font=("arial", 12))
+lb2.place(x=14, y=280)
+drplist.place(x=200, y=275)
+
+list_of_state= ("Maharashtra", "Assam", "Andra Pradesh", "Goa")
+cv = StringVar()
+drplist = OptionMenu(base, cv, *list_of_state)
+drplist.config(width=15)
+cv.set("Select State")
+lb6 = Label(base, text="Select State", width=13, font=("arial", 12))
+lb6.place(x=19, y=320)
+drplist.place(x=200, y=320)
+
+
+list_of_city= ("Pune", "Mumbai", "Delhi", "Vienna")
+cv = StringVar()
+drplist = OptionMenu(base, cv, *list_of_city)
+drplist.config(width=15)
+cv.set("Select City")
+lb7 = Label(base, text="Select City", width=13, font=("arial", 12))
+lb7.place(x=21, y=360)
+drplist.place(x=200, y=360)
+
+
+lb9 = Label(base, text="Known Language", width=15, font=("arial", 12))
+lb9.place(x=5, y=400)
+vars = IntVar()
+Radiobutton(base, text="Marathi", padx=5, variable=vars, value=1).place(x=180, y=400)
+Radiobutton(base, text="English", padx=10, variable=vars, value=2).place(x=240, y=400)
+Radiobutton(base, text="Hindi", padx=15, variable=vars, value=3).place(x=310, y=400)
+
+
+l3=Label(base,text="Select",width=18,font=("arial",12)).place(x=50,y=430)
+vars = IntVar()
+CheckVar2 = IntVar()
+C1 = Checkbutton(base, text = "Music", variable = vars,
+   onvalue = 1, offvalue = 0, height=5,
+   width = 20, )
+
+C2 = Checkbutton(base, text = "Video", variable = CheckVar2,
+   onvalue = 1, offvalue = 0, height=5,
+   width = 20)
+
+
+C1.place(x=150,y=430)
+C2.place(x=350,y=430)
+# C2.pack(side=LEFT)
+
+
+def show():
+   messagebox.showinfo("showinfo", "Succesfully")
+Button(base, text="Submit", width=10,command=show).place(x=200, y=500)
+base.mainloop()
